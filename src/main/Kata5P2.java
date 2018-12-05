@@ -12,6 +12,7 @@ import view.HistogramDisplay;
 import view.MailHistogramBuilder;
 import view.MailListReader;
 import model.Histogram;
+import view.MailListReaderBD;
 
 /**
  *
@@ -22,8 +23,8 @@ public class Kata5P2 {
     /**
      * @param args the command line arguments
      */
-     String fileName = "C:\\Users\\Usuario\\Documents\\NetBeansProjects\\Kata4\\email.txt";
-        List<Mail> mailList;
+     String fileName = "C:\\Users\\Asus\\Documents\\NetBeansProjects\\Kata5P2\\email.txt";
+        List<Mail> newMailArray;
         Histogram<String> histogram;
         HistogramDisplay histoDisplay;
         
@@ -41,11 +42,13 @@ public class Kata5P2 {
     }
 
     private void input() throws IOException {
-       mailList = new MailListReader().read(fileName); 
+        newMailArray = new MailListReaderBD().read(fileName); 
+        
+
     }
 
     private void process() {
-        histogram = new MailHistogramBuilder().build(mailList);
+        histogram = new MailHistogramBuilder().build(newMailArray);
         histoDisplay = new HistogramDisplay(histogram);
     }
 
